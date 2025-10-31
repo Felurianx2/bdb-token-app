@@ -1,0 +1,436 @@
+/* PALETA DE COLORES */
+:root {
+  --arena: #f1d989;
+  --tierra: #3e3932;
+  --turquesa: #0fbab7;
+  --profundo: #000c0c;
+  --arena-claro: #e2e3a9;
+  
+  --turquesa-hover: #0da09d;
+  --turquesa-light: rgba(15, 186, 183, 0.1);
+  --shadow: rgba(0, 12, 12, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--profundo) 0%, var(--tierra) 100%);
+  min-height: 100vh;
+  color: var(--arena-claro);
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--arena);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px var(--shadow);
+  animation: slideDown 0.6s ease-out;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.3rem;
+  color: var(--turquesa);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  font-style: italic;
+  animation: slideDown 0.8s ease-out;
+}
+
+/* Párrafo antes del botón conectar */
+p {
+  color: var(--arena-claro);
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--arena);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* BOTÓN PRINCIPAL - CONECTAR */
+button {
+  background: linear-gradient(135deg, var(--turquesa) 0%, var(--turquesa-hover) 100%);
+  color: white;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(15, 186, 183, 0.4);
+  animation: fadeIn 1s ease-out;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(15, 186, 183, 0.6);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background: linear-gradient(135deg, var(--tierra) 0%, #2a2621 100%);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* INFO BOX - WALLET CONECTADA */
+.info-box {
+  background: linear-gradient(135deg, var(--arena-claro) 0%, var(--arena) 100%);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px var(--shadow);
+  width: 100%;
+  animation: scaleIn 0.5s ease-out;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wallet-info > div {
+  width: 100%;
+}
+
+.wallet-info p {
+  color: var(--tierra);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.info-box code {
+  background: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  color: var(--turquesa);
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 0.5rem auto 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  word-break: break-all;
+  max-width: 100%;
+}
+
+/* BOTÓN DESCONECTAR */
+.btn-disconnect {
+  background: linear-gradient(135deg, var(--tierra) 0%, #2a2621 100%);
+  color: var(--arena);
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--arena);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(62, 57, 50, 0.4);
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-disconnect:hover {
+  background: linear-gradient(135deg, #2a2621 0%, var(--profundo) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(62, 57, 50, 0.6);
+  border-color: var(--turquesa);
+  color: var(--turquesa);
+}
+
+/* BOTÓN VER BALANCE */
+.balance-btn {
+  background: linear-gradient(135deg, var(--turquesa) 0%, #0da09d 100%);
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* DISPLAY DE BALANCE */
+.balance-display {
+  background: linear-gradient(135deg, var(--turquesa-light) 0%, rgba(226, 227, 169, 0.1) 100%);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--turquesa);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(15, 186, 183, 0.3);
+  animation: scaleIn 0.6s ease-out;
+}
+
+.balance-display p {
+  color: var(--arena-claro);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.balance-display h2 {
+  color: var(--turquesa);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(15, 186, 183, 0.5);
+}
+
+/* SECCIÓN DE TRANSFERENCIA */
+.transfer-section {
+  background: linear-gradient(135deg, var(--turquesa) 0%, #0da09d 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(15, 186, 183, 0.4);
+  animation: slideUp 0.7s ease-out;
+}
+
+.transfer-section h3 {
+  color: var(--arena);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* INPUTS */
+.input-address,
+.input-amount {
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--tierra);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.input-address::placeholder,
+.input-amount::placeholder {
+  color: var(--tierra);
+  opacity: 0.5;
+}
+
+.input-address:focus,
+.input-amount:focus {
+  outline: none;
+  border-color: var(--arena);
+  background: white;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(241, 217, 137, 0.3);
+}
+
+/* BOTÓN TRANSFERIR */
+.btn-transfer {
+  background: linear-gradient(135deg, var(--arena) 0%, var(--arena-claro) 100%);
+  color: var(--tierra);
+  padding: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(241, 217, 137, 0.5);
+}
+
+.btn-transfer:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--arena-claro) 0%, white 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(241, 217, 137, 0.7);
+}
+
+.btn-transfer:disabled {
+  background: linear-gradient(135deg, var(--tierra) 0%, #2a2621 100%);
+  color: var(--arena-claro);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .container {
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .info-box {
+    padding: 1.2rem;
+  }
+
+  .info-box code {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  button {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .balance-display {
+    padding: 1.5rem;
+  }
+
+  .balance-display h2 {
+    font-size: 2rem;
+  }
+
+  .transfer-section {
+    padding: 1.5rem;
+  }
+
+  .transfer-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .input-address,
+  .input-amount {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-transfer {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .container {
+    padding: 3rem 2rem;
+    max-width: 550px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 1rem 0.8rem;
+  }
+
+  .info-box,
+  .transfer-section {
+    padding: 1rem;
+  }
+
+  .balance-display h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Para pantallas muy grandes */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 650px;
+  }
+}
