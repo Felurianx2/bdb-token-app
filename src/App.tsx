@@ -24,7 +24,6 @@ function App() {
       }
 
       // Solicitar acceso
-      const network = 'TESTNET'
       const publicKey = await freighter.requestAccess()
 
       if (publicKey) {
